@@ -3,14 +3,14 @@
     {
       "title": "Read book",
       "descreption": "Learning reactjs",
-      "status": 0,
+      "status": 1,
       "id": 1
     },
     {
-      "id": 2,
       "title": "Play gamge",
       "descreption": "with friend",
-      "status": 1
+      "status": 1,
+      "id": 2
     },
     {
       "id": 3,
@@ -28,18 +28,6 @@
       "descreption": "Đi bơi với bạn bè",
       "status": 1,
       "id": 8
-    },
-    {
-      "title": "Chơi PlayStation",
-      "descreption": "Pes 2020",
-      "status": 2,
-      "id": 9
-    },
-    {
-      "title": "Fix bug",
-      "descreption": "mệt vl",
-      "status": 0,
-      "id": 10
     }
   ]
 }

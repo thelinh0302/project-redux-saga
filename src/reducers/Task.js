@@ -1,6 +1,6 @@
 import * as taskConstants from './../constants/task';
 import { toastError,toastSuccess } from '../commons/helper/toastHelper';
-import { act } from 'react-dom/test-utils';
+// import { act } from 'react-dom/test-utils';
 const initialState = {
     listTask:[],
     taskEditing:null
@@ -72,23 +72,22 @@ const reducer  = (state=initialState,action)=>{
         case taskConstants.UPDATE_TASK_SUCCESS:{
             const{data} = action.payload;
             const {listTask} = state;
-            const index = listTask.findIndex(item=>item.id= data.id);
+            const index = listTask.findIndex(item=>item.id=== data.id);
             if(index!==-1){
                 const newList =[
                     ...listTask.slice(0,index),
                     data,
-                    ...listTask.splice(index+1),
+                    ...listTask.slice(index + 1),
                 ];
                 toastSuccess('Chỉnh sửa công việc thành công');
                 return{
                     ...state,
                     listTask:newList
                 };
-            }else{
+            }
                 return{
                     ...state,
-                };
-            }   
+                };   
         }
         case taskConstants.UPDATE_TASK_FAIL:{
             const {error} = action.payload;

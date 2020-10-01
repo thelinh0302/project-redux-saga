@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import style from './style';
 import { withStyles } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
-import Taskboard from '../Taskboard';
+// import Taskboard from '../Taskboard';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './../../commons/themes';
 import {Provider} from 'react-redux';
@@ -16,14 +16,22 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter,Switch, } from 'react-router-dom';
 import {ADMIN_ROUTES} from './../../constants/index';
 import AdminLayoutRoute from './../../commons/layout/AdminLayoutRoute';
+import DefaultLayoutRoute from './../../commons/layout/DefaultLayoutRoute';
+import {ROUTES} from './../../constants/index';
 const store =configStore();
 
 class App extends Component {
   renderAdminRoute(){
     let xhtml = null;
-    console.log(ADMIN_ROUTES);
       xhtml=ADMIN_ROUTES.map(route=>{
         return<AdminLayoutRoute key = {route.path} name = {route.name}  path={route.path} component= {route.component} exact = {route.exact}  />;
+      });
+    return xhtml;
+  }
+  renderDefaultRoute(){
+    let xhtml = null;
+      xhtml=ROUTES.map(route=>{
+        return<DefaultLayoutRoute key = {route.path} name = {route.name}  path={route.path} component= {route.component} exact = {route.exact}  />;
       });
     return xhtml;
   }
@@ -40,6 +48,7 @@ class App extends Component {
             {/* <Taskboard/> */}
             <Switch>
               {this.renderAdminRoute()}
+              {this.renderDefaultRoute()}
             </Switch>
             <ModalComponent/>
         </ThemeProvider>

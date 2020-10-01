@@ -13,44 +13,45 @@ class SideBar extends Component {
     //         open:false,
     //     };
     // }
-    toggleDrawer =value =>{
+    toggleDrawer = value => {
         const { onToggleSideBar } = this.props;
-        if(onToggleSideBar){
+        if (onToggleSideBar) {
             onToggleSideBar(value);
         }
     }
-    renderList=()=>{
-        const {classes} = this.props;
-         let xhtml = null;
-            xhtml = (
-                <div className = {classes.list}>
-                    <List component ="div">
-                        { ADMIN_ROUTES.map(item=>{
-                            return(
-                                <NavLink to = {item.path} exact={item.exact} className = {classes.menuLink} activeClassName ={classes.menuLinkActive} key = {item.path}>
-                                    <ListItem 
-                                    className ={classes.listItem} 
-                                    key={item.path} 
+    renderList = () => {
+        const { classes } = this.props;
+        let xhtml = null;
+        xhtml = (
+            <div className={classes.list}>
+                <List component="div">
+                    {ADMIN_ROUTES.map(item => {
+                        return (
+                            <NavLink to={item.path} exact={item.exact} className={classes.menuLink} activeClassName={classes.menuLinkActive} key={item.path}>
+                                <ListItem
+                                    className={classes.listItem}
+                                    key={item.path}
                                     button
-                                     > 
-                                    { item.name }  
+                                >
+                                    {item.name}
                                 </ListItem>
-                                </NavLink>
-                            );
-                        }) }
-                    </List>
-                </div>
-            );
-         return xhtml;
+                            </NavLink>
+                        );
+                    })}
+                </List>
+            </div>
+        );
+        return xhtml;
     }
     render() {
-        const {classes,showSideBar} = this.props;
-        return(
+        const { classes, showSideBar } = this.props;
+        return (
             <Drawer
-            open = {showSideBar}
-            classes={{ paper: classes.drawerPaper}}
-            variant="persistent"
-            onClose={()=>this.toggleDrawer(false)}
+
+                open={showSideBar}
+                classes={{ paper: classes.drawerPaper }}
+                variant="persistent"
+                onClose={() => this.toggleDrawer(false)}
             >
                 {this.renderList()}
             </Drawer>
